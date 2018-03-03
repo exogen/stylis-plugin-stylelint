@@ -7,7 +7,14 @@
   "main": "index.js",
   "scripts": {
     "format": "prettier --write \"**/*.{js,md}\"",
+    "precommit": "lint-staged",
     "test": "jest"
+  },
+  "lint-staged": {
+    "**/*.{js,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "peerDependencies": {
     "stylelint": "^9.1.1",
@@ -18,7 +25,9 @@
     "get-stdin": "^6.0.0"
   },
   "devDependencies": {
+    "husky": "^0.14.3",
     "jest": "^22.4.2",
+    "lint-staged": "^7.0.0",
     "prettier": "^1.11.1",
     "stylelint": "^9.1.1",
     "stylelint-config-standard": "^18.2.0",
