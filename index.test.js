@@ -19,5 +19,20 @@ describe('plugin', () => {
         'stylelint resulted in error(s) and stylis-plugin-stylelint has `failOnError` enabled.'
       )
     })
+
+    it('works on nested selectors', () => {
+      expect(() =>
+        instance(
+          '',
+          `
+.foo {
+  .bar {
+    color: red;
+  }
+}
+      `.trim()
+        )
+      ).not.toThrow()
+    })
   })
 })

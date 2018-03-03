@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "format": "prettier --write \"**/*.{js,md}\"",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && npm test",
     "test": "jest"
   },
   "lint-staged": {
@@ -31,6 +31,7 @@
     "prettier": "^1.11.1",
     "stylelint": "^9.1.1",
     "stylelint-config-standard": "^18.2.0",
+    "stylelint-config-styled-components": "^0.1.1",
     "stylis": "^3.4.10"
   }
 }
