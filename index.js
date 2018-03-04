@@ -1,9 +1,13 @@
 const execa = require('execa')
+const stripIndentFn = require('strip-indent')
 
 const nodeBin = process.execPath || 'node'
 const stylelintSync = require.resolve('./stylelintSync')
 
-function createStylelintPlugin({ failOnError = false } = {}) {
+function createStylelintPlugin({
+  failOnError = false,
+  stripIndent = true
+} = {}) {
   function stylelintPlugin(
     context,
     content,
@@ -14,7 +18,9 @@ function createStylelintPlugin({ failOnError = false } = {}) {
     length
   ) {
     if (context === -1) {
-      const child = execa.sync(nodeBin, [stylelintSync], { input: content })
+      // TODO: Figure out how to pass file or component name.
+      const lintContent = stripIndent ? stripIndentFn(content) : content
+      const child = execa.sync(nodeBin, [stylelintSync], { input: lintContent })
       const response = JSON.parse(child.stdout)
       if (response.error) {
         const error = new Error(response.error.message)

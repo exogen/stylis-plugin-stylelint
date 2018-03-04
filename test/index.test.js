@@ -1,5 +1,6 @@
+jest.unmock('stylis')
 const stylis = require('stylis')
-const createPlugin = require('./index')
+const createPlugin = require('../index')
 
 describe('plugin', () => {
   describe('with styled-components configuration', () => {
