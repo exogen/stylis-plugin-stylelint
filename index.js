@@ -8,7 +8,8 @@ function createStylelintPlugin({
   failOnError = false,
   stripIndent = true,
   formatter = 'string',
-  getLintOptions
+  getLintOptions,
+  resultCollector
 } = {}) {
   function stylelintPlugin(
     context,
@@ -42,13 +43,19 @@ function createStylelintPlugin({
       if (response.result.output) {
         console.error(response.result.output)
       }
-      if (failOnError && response.result.errored) {
-        const error = new Error(
-          'stylelint resulted in error(s) and stylis-plugin-stylelint has `failOnError` enabled.'
-        )
-        error.meta = meta
-        error.options = options
-        throw error
+      if (response.result.errored) {
+        if (failOnError) {
+          const error = new Error(
+            'stylelint resulted in error(s) and stylis-plugin-stylelint has `failOnError` enabled.'
+          )
+          error.stylelintError = true
+          error.meta = meta
+          error.options = options
+          error.result = response.result
+          throw error
+        } else if (resultCollector) {
+          resultCollector(response.result)
+        }
       }
     }
   }

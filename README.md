@@ -45,3 +45,11 @@ The function is called with a `meta` object with values from stylis:
 `{ selectors, parent, line, column, length }`
 
 Default: `undefined`
+
+### resultCollector
+
+If `failOnError` is false but there is an error, this function will be called
+with the results. You can use this to extract the errors that occurred and
+report them in a nicer way without throwing.
+
+Default: `undefined`
