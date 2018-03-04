@@ -1,6 +1,6 @@
 {
   "name": "stylis-plugin-stylelint",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Stylis plugin/middleware for running stylelint",
   "author": "Brian Beck <exogen@gmail.com>",
   "license": "MIT",
