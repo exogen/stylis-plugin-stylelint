@@ -1,9 +1,10 @@
 const stylelint = require('stylelint')
 const getStdin = require('get-stdin')
 
-getStdin().then(css => {
+getStdin().then(input => {
+  input = JSON.parse(input)
   stylelint
-    .lint({ code: css, formatter: 'string' })
+    .lint(input)
     .then(result => {
       console.log(JSON.stringify({ result }))
     })

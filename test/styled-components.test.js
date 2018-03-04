@@ -12,10 +12,10 @@ describe('using a stylis mock to lint styled-components', () => {
   })
 
   it('logs multiple lint errors', () => {
+    // prettier-ignore
     const Title = styled.h1`
-      background: d2;
-      color: {
-      }
+      background: d2
+      color: {}
     `
     const wrapper = TestRenderer.create(<Title />)
     expect(wrapper.toJSON()).toMatchSnapshot()

@@ -26,3 +26,22 @@ Whether to strip indentation from the CSS string before linting. Uses the
 [strip-indent](https://github.com/sindresorhus/strip-indent) module.
 
 Default: `true`
+
+#### formatter
+
+The stylelint formatter to use.
+
+Default: `'string'`
+
+#### getLintOptions
+
+A custom function to add options to
+[the object passed to stylelint](https://github.com/stylelint/stylelint/blob/master/docs/user-guide/node-api.md#options).
+The result will be merged with (and will overwrite) existing options set by this
+plugin.
+
+The function is called with a `meta` object with values from stylis:
+
+`{ selectors, parent, line, column, length }`
+
+Default: `undefined`

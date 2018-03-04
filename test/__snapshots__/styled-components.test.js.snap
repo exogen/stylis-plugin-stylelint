@@ -2,7 +2,7 @@
 
 exports[`using a stylis mock to lint styled-components logs multiple lint errors 1`] = `
 <h1
-  className="styled-componentstest__Title-s6un9az-1 jzxgKV"
+  className="styled-componentstest__Title-s6un9az-1 dtUSkp"
 />
 `;
 

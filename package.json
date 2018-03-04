@@ -8,7 +8,7 @@
   "scripts": {
     "format": "prettier --write \"**/*.{js,md}\"",
     "precommit": "lint-staged && npm test",
-    "test": "jest --verbose"
+    "test": "jest"
   },
   "lint-staged": {
     "**/*.{js,md}": [

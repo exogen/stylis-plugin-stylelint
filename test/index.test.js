@@ -1,10 +1,10 @@
 jest.unmock('stylis')
-const stylis = require('stylis')
+const Stylis = require('stylis')
 const createPlugin = require('../index')
 
 describe('plugin', () => {
   describe('with styled-components configuration', () => {
-    const instance = new stylis({
+    const stylis = new Stylis({
       global: false,
       cascade: true,
       keyframe: false,
@@ -13,17 +13,17 @@ describe('plugin', () => {
       semicolon: false
     })
     const plugin = createPlugin({ failOnError: true })
-    instance.use(plugin)
+    stylis.use(plugin)
 
     it('throws an error when failOnError is true and lint fails', () => {
-      expect(() => instance('', `border: blah`)).toThrow(
+      expect(() => stylis('', `border: blah`)).toThrow(
         'stylelint resulted in error(s) and stylis-plugin-stylelint has `failOnError` enabled.'
       )
     })
 
     it('works on nested selectors', () => {
       expect(() =>
-        instance(
+        stylis(
           '',
           `
 .foo {
