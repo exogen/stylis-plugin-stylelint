@@ -19,3 +19,10 @@ stylis.use(stylelintPlugin(/* options */))
 Whether to throw an error from the plugin if stylelint finds any errors.
 
 Default: `false`
+
+#### stripIndent
+
+Whether to strip indentation from the CSS string before linting. Uses the
+[strip-indent](https://github.com/sindresorhus/strip-indent) module.
+
+Default: `true`
